@@ -1567,7 +1567,7 @@ impl<'a, Word: Clone + 'a, Buf: SafeBuf<Word> + 'a> AsReadWords<'a, Word, Stack>
     }
 }
 
-impl<'a, Word: Clone + 'a, Buf: AsRef<[Word]> + 'a> AsReadWords<'a, Word, Queue> for Buf {
+impl<'a, Word: Clone + 'a, Buf: ?Sized + AsRef<[Word]> + 'a> AsReadWords<'a, Word, Queue> for Buf {
     type AsReadWords = Cursor<Word, &'a [Word]>;
 
     fn as_read_words(&'a self) -> Self::AsReadWords {

@@ -721,7 +721,7 @@ where
         })
     }
 
-    pub fn for_compressed<'a, Buf>(compressed: &'a Buf) -> Result<Self, Backend::ReadError>
+    pub fn for_compressed<'a, Buf: ?Sized>(compressed: &'a Buf) -> Result<Self, Backend::ReadError>
     where
         Buf: AsReadWords<'a, Word, Queue, AsReadWords = Backend>,
     {
